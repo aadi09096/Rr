@@ -217,7 +217,7 @@ def handle_aadi(message):
         if user_id not in admin_id:
             # Check if the user has run the command before and is still within the cooldown period
             if user_id in aadi_cooldown and (datetime.datetime.now() - aadi_cooldown[user_id]).seconds < 3:
-                response = "You Are On Cooldown . Please Wait 5min Before Running The /aadi Command Again."
+                response = "You Are On Cooldown . Please Wait 3sec Before Running The /aadi Command Again."
                 bot.reply_to(message, response)
                 return
             # Update the last time the user ran the command
@@ -229,7 +229,7 @@ def handle_aadi(message):
             port = int(command[2])  # Convert time to integer
             time = int(command[3])  # Convert port to integer
             if time > 181:
-                response = "Error: Time interval must be less than 80."
+                response = "Error: Time interval must be less than 180."
             else:
                 record_command_logs(user_id, '/aadi', target, port, time)
                 log_command(user_id, target, port, time)
